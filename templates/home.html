@@ -1,0 +1,73 @@
+<style>
+.result-container {
+    border-style: groove;
+    border-radius: 10px;
+    margin-bottom: 2px;
+}
+
+.card-header {
+    background-color: #ffffff;
+}
+
+.result-text {
+    font-size: 20px;
+    margin: 0;
+}
+
+.form-container {
+    background-color: #c2d6d6;
+    border: 2px groove;
+    border-radius: 10px;
+    padding-bottom: 3px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea {
+    background-color: #f0f5f5;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+</style>
+
+{% if i %}
+<div class="mb-2 result-container">
+    <div class="card-header">
+        <p class="m-0 result-text">{{word}} Words in that text</p>
+    </div>
+</div>
+{% endif %}
+
+<div class="col-12 pb-3 form-container">
+    <form action="counter" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="text1">Paste your text</label>
+            <textarea class="form-control" placeholder="Paste your text here to count words and characters"
+                    name="texttocount" id="text1" rows="8">{{text}}</textarea>
+        </div>
+
+        <div class="text-center">
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary w-25">Run Counter</button>
+        </div>
+    </form>
+</div>
